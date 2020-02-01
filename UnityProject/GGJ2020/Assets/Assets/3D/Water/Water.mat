@@ -81,7 +81,7 @@ Material:
     - _FadeDistance: 40
     - _FadeStep: 10
     - _Foam: 3
-    - _FoamStep: 5.3
+    - _FoamStep: 1.208
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
