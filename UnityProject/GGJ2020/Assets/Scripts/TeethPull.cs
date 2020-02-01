@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
-public class TeethPull : MonoBehaviour
+namespace GGJ
 {
-	public float Speed = 200f;
-	public Rigidbody HeadRigidbody;
-
-	private void Start()
+	[RequireComponent(typeof(SphereCollider))]
+	public class TeethPull : MonoBehaviour
 	{
-		HeadRigidbody = GetComponent<Rigidbody>();
-	}
+		public float Speed = 200f;
+		public Rigidbody HeadRigidbody;
 
-	private void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.tag == "Logs" && Input.GetKey(KeyCode.Space))
+		private void Start()
 		{
-			if (other.attachedRigidbody != null)
+			HeadRigidbody = GetComponent<Rigidbody>();
+		}
+
+		private void OnTriggerStay(Collider other)
+		{
+			if (other.gameObject.tag == "Logs" && Input.GetKey(KeyCode.Space))
 			{
-				RaycastHit hit;
-				if (Physics.Raycast(transform.position, transform.forward, out hit))
+				if (other.attachedRigidbody != null)
 				{
-					Vector3 normal = hit.normal;
-					Vector3 velocity = normal * Speed * Time.fixedDeltaTime;
-					velocity.y = other.attachedRigidbody.velocity.y;
-					other.attachedRigidbody.velocity = velocity;
-					Debug.Log("Hold obj");
+					RaycastHit hit;
+					if (Physics.Raycast(transform.position, transform.forward, out hit))
+					{
+						Vector3 normal = hit.normal;
+						Vector3 velocity = normal * Speed * Time.fixedDeltaTime;
+						velocity.y = other.attachedRigidbody.velocity.y;
+						other.attachedRigidbody.velocity = velocity;
+						Debug.Log("Hold obj");
+					}
 				}
 			}
 		}
