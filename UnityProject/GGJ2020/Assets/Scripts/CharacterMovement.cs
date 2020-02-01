@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MovementTests : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
 	public float Speed = 200f;
 	public float RotationSpeed = 200f;

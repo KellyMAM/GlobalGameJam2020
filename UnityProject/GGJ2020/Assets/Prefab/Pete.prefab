@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 5052768727877143108}
   - component: {fileID: 2372387587616326477}
   - component: {fileID: 995865111}
-  - component: {fileID: 995865110}
+  - component: {fileID: 1003074314135003310}
   m_Layer: 0
   m_Name: Teeth
   m_TagString: Untagged
@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5052768727877143129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.074, z: 0.644}
+  m_LocalPosition: {x: 0, y: 0.097, z: 0.546}
   m_LocalScale: {x: 0.5, y: 0.171585, z: 0.5}
   m_Children: []
   m_Father: {fileID: 5052768729355476770}
@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 200
+  HeadRigidbody: {fileID: 5052768729355476771}
 --- !u!54 &995865111
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -532,19 +533,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &995865110
-SphereCollider:
+--- !u!136 &1003074314135003310
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5052768727877143129}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0.15}
+  m_Radius: 0.38
+  m_Height: 5.59
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.62, z: 0.43}
 --- !u!1 &5052768728527045903
 GameObject:
   m_ObjectHideFlags: 0
