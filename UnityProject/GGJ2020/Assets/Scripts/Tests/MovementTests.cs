@@ -5,15 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MovementTests : MonoBehaviour
 {
-	public float Speed = 150f;
+	public float Speed = 200f;
 	public float RotationSpeed = 200f;
 
 	private float _vertical;
 	private float _horizontal;
 	private Rigidbody _rigidbody;
-
-	[SerializeField]
-	private BoxCollider _beavetMouth;
 
 	private void Start()
 	{
@@ -31,13 +28,5 @@ public class MovementTests : MonoBehaviour
 
 		Vector3 angularVelocity = (transform.up * _horizontal) * RotationSpeed * Time.fixedDeltaTime;
 		_rigidbody.angularVelocity = angularVelocity;
-	}
-
-	private void OnCollisionStay(Collision collision)
-	{
-		if (collision.gameObject.tag == "Logs" && Input.GetKey(KeyCode.Space))
-		{
-			Debug.Log("Hold obj");
-		}
 	}
 }
