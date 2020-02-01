@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace GGJ
 {
-	///AND SO WE START
+	public class GameManager : MonoBehaviour
+	{
+		///AND SO WE START
+	}
 }
