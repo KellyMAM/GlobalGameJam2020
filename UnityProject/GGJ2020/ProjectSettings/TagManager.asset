@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: OnWater
+    uniqueID: 2695948543
+    locked: 0
+  - name: UnderFoliage
+    uniqueID: 3529044633
+    locked: 0
+  - name: Foliage
+    uniqueID: 2704562875
+    locked: 0
