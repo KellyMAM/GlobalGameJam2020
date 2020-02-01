@@ -27,11 +27,14 @@ namespace GGJ
 		private List<Log> _logsPlaced = new List<Log>();
 		private List<Coroutine> _lerpToCoroutines = new List<Coroutine>();
 
-		private float _rangeCheck = 1f;
-		private float _duration = 5f;
+		private float _rangeCheck = 3f;
+		private float _duration = 2f;
 
 		public event Action OnAllLogSpacesFilled = delegate { };
 		public event Action<Log> OnLogPlaced = delegate { };
+
+		[SerializeField]
+		private AnimationCurve Curve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
 
 		private void OnTriggerEnter(Collider other)
 		{
@@ -65,36 +68,50 @@ namespace GGJ
 			return logSpace;
 		}
 
-		/*		private bool DistanceCheck(Transform target, Transform item)
-				{
-					bool inRange = false;
+		private bool DistanceCheck(Transform target, Transform item)
+		{
+			bool inRange = false;
 
-					float dis = Vector3.Distance(target.position, item.position);
-					float angleLeft = Vector3.Angle(target.position, item.position);
-					if (dis < _rangeCheck && angleLeft < _rangeCheck)
-					{
-						inRange = true;
-					}
+			float dis = Vector3.Distance(target.position, item.position);
+			float angleLeft = Vector3.Angle(target.position, item.position);
+			if (dis < _rangeCheck && angleLeft < _rangeCheck)
+			{
+				inRange = true;
+			}
 
-					return inRange;
-				}
-		*/
+			return inRange;
+		}
+
 		private IEnumerator LerpTo(int index, LogSpace target, Log log)
 		{
 			float elapsedTime = 0f;
 			Debug.Log("Starting Lerp");
+			log.LogPlaced();
+
 			while (elapsedTime < _duration)
 			{
-				log.transform.position = Vector3.Lerp(log.transform.position, target.transform.position, (elapsedTime / _duration));
-				log.transform.rotation = Quaternion.Euler(Vector3.Lerp(log.transform.rotation.eulerAngles, target.transform.rotation.eulerAngles, (elapsedTime / _duration)));
+				float value = Curve.Evaluate((elapsedTime / _duration));
+
+				//Position
+				log.transform.position = Vector3.Lerp(log.transform.position, target.transform.position, value);
+
+				//Rotation
+				Vector3 rotation = Vector3.Lerp(log.transform.rotation.eulerAngles, target.transform.rotation.eulerAngles, value);
+				rotation = new Vector3(90, rotation.y, 0);
+				log.transform.eulerAngles = rotation;
+
+				elapsedTime += Time.deltaTime;
 				yield return null;
 			}
+
+			//Locking values
+			log.transform.position = target.transform.position;
+			log.transform.rotation = target.transform.rotation;
 
 			target.CurrentState = LogSpaceState.Filled;
 			log.CurrentState = LogState.Placed;
 
 			_logsPlaced.Add(log);
-			log.LogPlaced();
 
 			OnLogPlaced(log);
 			Debug.Log("Completed Lerp");

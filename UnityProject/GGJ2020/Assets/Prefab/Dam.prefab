@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3756731948027121376}
   - component: {fileID: 789883188151634378}
   - component: {fileID: 4280857823266591617}
-  - component: {fileID: 6510058300820637584}
   - component: {fileID: 1812090014613852986}
   m_Layer: 0
   m_Name: LogSpace
@@ -81,19 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6510058300820637584
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463392607183958470}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000012, y: 2.0000007, z: 1.0000008}
-  m_Center: {x: 0, y: 0.00000023841858, z: 0}
 --- !u!114 &1812090014613852986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6435762249853435334}
   m_LocalRotation: {x: -0, y: -0.328173, z: -0, w: 0.9446177}
-  m_LocalPosition: {x: -6.65, y: 0.51, z: 2.1}
+  m_LocalPosition: {x: -6.65, y: 0.51, z: 7.25}
   m_LocalScale: {x: 43.11215, y: 1.4529, z: 2.4935}
   m_Children: []
   m_Father: {fileID: 3676922841731406166}
@@ -248,9 +234,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _LogSpaces:
-  - {fileID: 6859735333458027354}
   - {fileID: 1812090014613852986}
+  - {fileID: 6859735333458027354}
   - {fileID: 6786233065968016415}
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6864096630472677513
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +272,6 @@ GameObject:
   - component: {fileID: 3838324727714137689}
   - component: {fileID: 2967818456709437781}
   - component: {fileID: 1193865039300633768}
-  - component: {fileID: 6792664287855216514}
   - component: {fileID: 6859735333458027354}
   m_Layer: 0
   m_Name: LogSpace
@@ -332,19 +341,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6792664287855216514
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6864096630472677513}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.0000002, z: 1.0000002}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6859735333458027354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +365,6 @@ GameObject:
   - component: {fileID: 4959888367402026258}
   - component: {fileID: 4124737544462796860}
   - component: {fileID: 960613316313211797}
-  - component: {fileID: 8411412684881763334}
   - component: {fileID: 6786233065968016415}
   m_Layer: 0
   m_Name: LogSpace
@@ -439,19 +434,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8411412684881763334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7974720933689913325}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.0000002, z: 1.0000002}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6786233065968016415
 MonoBehaviour:
   m_ObjectHideFlags: 0
