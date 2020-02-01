@@ -2,37 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class MovementTests : MonoBehaviour
 {
-	public float rotateSpeed = 90.0f;
-	public float speed = 5.0f;
+	public float Speed = 150f;
+	public float RotationSpeed = 200f;
 
-	private void Update()
+	private float _vertical;
+	private float _horizontal;
+	private Rigidbody _rigidbody;
+
+	[SerializeField]
+	private BoxCollider _beavetMouth;
+
+	private void Start()
 	{
-		var rot = Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed;
-		transform.Rotate(Vector3.up * rot);
+		_rigidbody = GetComponent<Rigidbody>();
+	}
 
-		var movement = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-		transform.Translate(0, 0, movement);
+	private void FixedUpdate()
+	{
+		_vertical = Input.GetAxis("Vertical");
+		_horizontal = Input.GetAxis("Horizontal");
 
-		var transAmount = speed * Time.deltaTime;
-		var rotateAmount = rotateSpeed * Time.deltaTime;
+		Vector3 velocity = (transform.forward * _vertical) * Speed * Time.fixedDeltaTime;
+		velocity.y = _rigidbody.velocity.y;
+		_rigidbody.velocity = velocity;
 
-		if (Input.GetKey("up"))
+		Vector3 angularVelocity = (transform.up * _horizontal) * RotationSpeed * Time.fixedDeltaTime;
+		_rigidbody.angularVelocity = angularVelocity;
+	}
+
+	private void OnCollisionStay(Collision collision)
+	{
+		if (collision.gameObject.tag == "Logs" && Input.GetKey(KeyCode.Space))
 		{
-			transform.Translate(0, 0, transAmount);
-		}
-		if (Input.GetKey("down"))
-		{
-			transform.Translate(0, 0, -transAmount);
-		}
-		if (Input.GetKey("left"))
-		{
-			transform.Rotate(0, -rotateAmount, 0);
-		}
-		if (Input.GetKey("right"))
-		{
-			transform.Rotate(0, rotateAmount, 0);
+			Debug.Log("Hold obj");
 		}
 	}
 }
