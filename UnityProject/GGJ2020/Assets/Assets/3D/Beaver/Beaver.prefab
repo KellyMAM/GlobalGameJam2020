@@ -834,7 +834,7 @@ GameObject:
   - component: {fileID: 4514581522172128054}
   - component: {fileID: 4514581522172128053}
   - component: {fileID: 4514581522172128055}
-  - component: {fileID: 1449332721306519853}
+  - component: {fileID: 8027811167631316959}
   m_Layer: 0
   m_Name: Beaver
   m_TagString: Untagged
@@ -902,7 +902,7 @@ MonoBehaviour:
   Speed: 200
   RotationSpeed: 200
   Rigidbody: {fileID: 4514581522172128054}
---- !u!114 &1449332721306519853
+--- !u!114 &8027811167631316959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -911,25 +911,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5586415100600275145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd5e5ddd242bd64581fb5ed9c0e0507, type: 3}
+  m_Script: {fileID: 11500000, guid: 78947d921647d1c42816322e908edc97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PolyMesh:
-    name: 
-    vertices: []
-    normals: []
-    colors: []
-    tangents: []
-    uv0: []
-    uv1: []
-    uv2: []
-    uv3: []
-    m_Triangles: 
-    m_SubMeshes: []
-    m_Mesh: {fileID: 0}
-  m_SkinMeshRef: {fileID: 0}
-  m_OriginalMeshObject: {fileID: 0}
-  m_Mode: 0
 --- !u!1 &5826875557310041851
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - IgnoreCollision
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Foliage
     uniqueID: 2704562875
+    locked: 0
+  - name: Trees
+    uniqueID: 3974844081
     locked: 0

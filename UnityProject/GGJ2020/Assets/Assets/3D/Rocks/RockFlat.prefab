@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 852824347149133574}
   - component: {fileID: 6406755655074126847}
   m_Layer: 0
-  m_Name: rockflat
+  m_Name: RockFlat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 680b601d6fb84c24eabb0fe960dca79c, type: 3}
+  - {fileID: 2100000, guid: e487138d1b981dd44be99e7d7c5d9c34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
