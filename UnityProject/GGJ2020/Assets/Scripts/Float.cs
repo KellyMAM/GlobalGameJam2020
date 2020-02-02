@@ -18,7 +18,7 @@ public class Float : MonoBehaviour
 
     [SerializeField]
     [Range(0f, 1f)]
-    private float normalizedVoxelSize = 0.2f;
+    private float normalizedVoxelSize = 0.5f;
 
     [SerializeField]
     private float dragInWater = 1f;
