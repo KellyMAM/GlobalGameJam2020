@@ -540,6 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366219965768307671}
   - component: {fileID: 4366219965768307670}
+  - component: {fileID: 4366219964070461684}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -576,4 +577,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   _attractor: {fileID: 4366219965299892258}
-  _levelPrefab: {fileID: 0}
+  _levelPrefab: {fileID: 5168109317036832212, guid: 29dda4e3b4a834d4e90453bf46383018,
+    type: 3}
+--- !u!81 &4366219964070461684
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366219965768307665}
+  m_Enabled: 1
