@@ -25,6 +25,7 @@ namespace GGJ
 
 		private void FadeInStoryboard()
 		{
+			_attractor.TurnOnStartStoryboard();
 			_currentStartStoryBoardIndex = 0;
 			_attractor.NextStartStoryboard(_currentStartStoryBoardIndex);
 			_attractor.TurnOffAttractor();
@@ -80,19 +81,18 @@ namespace GGJ
 			}
 
 			_attractor.TurnOnMain();
-			_attractor.TurnOffAttractor();
-
 			_attractor.TurnOffStartStoryboard();
 
-			Debug.Log("Well done you have completed the game");
+			_currentEndStoryBoardIndex = 0;
+			_attractor.NextEndStoryboard(_currentEndStoryBoardIndex);
 
+			Debug.Log("Well done you have completed the game");
 		}
 
 		private void EndGame()
 		{
 			Debug.Log("End of the game Jack");
 			_attractor.TurnOnAttractor();
-			_attractor.TurnOnStartStoryboard();
 		}
 	}
 }

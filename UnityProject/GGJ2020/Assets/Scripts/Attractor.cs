@@ -83,8 +83,8 @@ namespace GGJ
 
 		public void TurnOnStartStoryboard()
 		{
-			_startStoryboardAnim.ResetTrigger("TurnOnImmediate");
-			_startStoryboardAnim.SetTrigger("TurnOnImmediate");
+			_startStoryboardAnim.ResetTrigger("TurnOn");
+			_startStoryboardAnim.SetTrigger("TurnOn");
 		}
 
 		public void NextEndStoryboard(int index)

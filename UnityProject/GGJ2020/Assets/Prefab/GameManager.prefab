@@ -1261,16 +1261,16 @@ MonoBehaviour:
   _attractAnim: {fileID: 1214164101962203673}
   StartStoryboardButton: {fileID: 9088088967218616301}
   StartStoryboardSprites:
-  - {fileID: 21300000, guid: 590491465656bc548bafb76d07fa71ac, type: 3}
-  - {fileID: 21300000, guid: ab5328bed8e7a104588a405f7ffcca0c, type: 3}
-  - {fileID: 21300000, guid: 8b4e0820da5856e40ae918b0f03eeb15, type: 3}
+  - {fileID: 21300000, guid: eede2bd1db642cc49bd33c188d2c41f2, type: 3}
+  - {fileID: 21300000, guid: 8f6f08f6e014c9e419b5eeb3c0a4723b, type: 3}
+  - {fileID: 21300000, guid: e4c5b4854cf77b749bf019230ee5305a, type: 3}
+  - {fileID: 21300000, guid: 7cc547270eae1ee4b9de752214880064, type: 3}
   StartStoryboardImage: {fileID: 1936912710250370005}
   _startStoryboardAnim: {fileID: 2193555769722039491}
   EndStoryboardButton: {fileID: 3787165303452563633}
   EndStoryboardSprites:
-  - {fileID: 21300000, guid: 41120211f4999954385c2fa5a06d3977, type: 3}
-  - {fileID: 21300000, guid: ab5328bed8e7a104588a405f7ffcca0c, type: 3}
-  - {fileID: 21300000, guid: 596526d0fa093ec4f8b8c5e0b6e7bac2, type: 3}
+  - {fileID: 21300000, guid: a321108fb7468ed4b9b94f8f743c1fad, type: 3}
+  - {fileID: 21300000, guid: a6898200c9566fa4194cf96afc8b8abd, type: 3}
   EndStoryboardImage: {fileID: 2229653860460276590}
 --- !u!95 &4366219965299892285
 Animator:
@@ -2022,7 +2022,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
