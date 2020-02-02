@@ -5,10 +5,12 @@ using UnityEngine;
 public class RaiseToWater : MonoBehaviour
 {
     float startOffset;
+    public bool useOffset = true;
 
     void Start()
     {
-        startOffset = transform.position.y;
+        if (useOffset) startOffset = transform.position.y;
+        else startOffset = 0.1f;
     }
 
     void Update()

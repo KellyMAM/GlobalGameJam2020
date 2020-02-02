@@ -23,6 +23,8 @@ namespace GGJ
         {
             _rigidbody.isKinematic = true;
             _capsuleCollider.enabled = false;
+            RaiseToWater w = gameObject.AddComponent<RaiseToWater>();
+            w.useOffset = false;
         }
     }
 }
