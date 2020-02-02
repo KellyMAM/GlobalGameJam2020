@@ -4,19 +4,9 @@ using UnityEngine;
 
 namespace GGJ
 {
-	public enum GameState
-	{
-		Attractor,
-		Start,
-		Playing,
-		PayOff
-	}
-
 	public class GameManager : MonoBehaviour
 	{
-		public GameState CurrentState = GameState.Attractor;
-
-		[SerializeField]
+ 		[SerializeField]
 		private Attractor _attractor;
 		[SerializeField]
 		private Level _levelPrefab;
@@ -25,7 +15,8 @@ namespace GGJ
 
 		private void Awake()
 		{
-			_attractor.StartButton.onClick.AddListener(StartGame);
+			_attractor.StartButton.onClick.AddListener(FadeInStoryboard);
+			_attractor.StoryboardButton.onClick.AddListener(StartGame);
 		}
 
 		private void TurnOnAttractor()
@@ -38,9 +29,19 @@ namespace GGJ
 			_attractor.TurnOffAttractor();
 		}
 
+		private void FadeInStoryboard()
+		{
+			_attractor.TurnOffHomeScreen();
+		}
+
 		private void StartGame()
 		{
 			Debug.Log("Starting game");
+			if (_currentLevel != null)
+			{
+				Destroy(_currentLevel.gameObject);
+				_currentLevel = null;
+			}
 			_currentLevel = Instantiate<GameObject>(_levelPrefab.gameObject, this.transform).GetComponent<Level>();
 			_currentLevel.transform.position = Vector3.zero;
 			_currentLevel.DamCollector.OnAllLogSpacesFilled += PlayPayOff;
@@ -51,8 +52,6 @@ namespace GGJ
 		private void EndGame()
 		{
 			TurnOnAttractor();
-			Destroy(_currentLevel.gameObject);
-			_currentLevel = null;
 		}
 
 		private void PlayPayOff()
