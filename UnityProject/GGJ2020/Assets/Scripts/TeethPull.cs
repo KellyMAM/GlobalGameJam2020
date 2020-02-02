@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace GGJ
 {
-	[RequireComponent(typeof(SphereCollider))]
 	public class TeethPull : MonoBehaviour
 	{
 		public float Speed = 200f;
