@@ -21,7 +21,11 @@ namespace GGJ
 
 		private void FixedUpdate()
 		{
-			_vertical = Input.GetAxis("Vertical");
+			_vertical =Input.GetAxis("Vertical");
+			if (_vertical < 0)
+			{
+				_vertical = 0;
+			}
 			_horizontal = Input.GetAxis("Horizontal");
 
 			Vector3 velocity = (transform.forward * _vertical) * Speed * Time.fixedDeltaTime;

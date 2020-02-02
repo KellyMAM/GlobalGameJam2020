@@ -25,7 +25,6 @@ namespace GGJ
 		private List<LogSpace> _LogSpaces = new List<LogSpace>();
 
 		private List<Log> _logsPlaced = new List<Log>();
-		private List<Coroutine> _lerpToCoroutines = new List<Coroutine>();
 
 		private float _rangeCheck = 3f;
 		private float _duration = 2f;
@@ -48,7 +47,7 @@ namespace GGJ
 					LogSpace logSpace = LogSpaceTransform();
 					logSpace.CurrentState = LogSpaceState.Filling;
 
-					_lerpToCoroutines.Add(StartCoroutine(LerpTo(_lerpToCoroutines.Count, logSpace, log)));
+					StartCoroutine(LerpTo(logSpace, log));
 				}
 			}
 		}
@@ -82,7 +81,7 @@ namespace GGJ
 			return inRange;
 		}
 
-		private IEnumerator LerpTo(int index, LogSpace target, Log log)
+		private IEnumerator LerpTo(LogSpace target, Log log)
 		{
 			float elapsedTime = 0f;
 			Debug.Log("Starting Lerp");
@@ -117,9 +116,6 @@ namespace GGJ
 			Debug.Log("Completed Lerp");
 
 			target.SpaceFilled();
-
-			_lerpToCoroutines[index] = null;
-			_lerpToCoroutines.RemoveAt(index);
 
 			LogSpacesFilledCheck();
 
