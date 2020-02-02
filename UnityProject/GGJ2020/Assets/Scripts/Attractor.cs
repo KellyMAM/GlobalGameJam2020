@@ -20,6 +20,12 @@ namespace GGJ
 		[SerializeField]
 		public Button StoryboardButton;
 
+		[SerializeField]
+		public Sprite[] StoryboardSprites;
+
+		[SerializeField]
+		private Image StoryboardImage;
+
 		private void Awake()
 		{
 			_animatorAttractor = GetComponent<Animator>();
@@ -47,6 +53,11 @@ namespace GGJ
 		{
 			_animatorHome.ResetTrigger("TurnOnImmediate");
 			_animatorHome.SetTrigger("TurnOnImmediate");
+		}
+
+		public void NextStoryboard(int index)
+		{
+			StoryboardImage.sprite = StoryboardSprites[index];
 		}
 	}
 }

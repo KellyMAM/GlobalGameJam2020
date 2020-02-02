@@ -6,17 +6,19 @@ namespace GGJ
 {
 	public class GameManager : MonoBehaviour
 	{
- 		[SerializeField]
+		[SerializeField]
 		private Attractor _attractor;
 		[SerializeField]
 		private Level _levelPrefab;
 
 		private Level _currentLevel;
 
+		private int _currentStoryBoardIndex = 0;
+
 		private void Awake()
 		{
 			_attractor.StartButton.onClick.AddListener(FadeInStoryboard);
-			_attractor.StoryboardButton.onClick.AddListener(StartGame);
+			_attractor.StoryboardButton.onClick.AddListener(NextStoryBoard);
 		}
 
 		private void TurnOnAttractor()
@@ -31,6 +33,8 @@ namespace GGJ
 
 		private void FadeInStoryboard()
 		{
+			_currentStoryBoardIndex = 0;
+			_attractor.NextStoryboard(_currentStoryBoardIndex);
 			_attractor.TurnOffHomeScreen();
 		}
 
@@ -47,6 +51,19 @@ namespace GGJ
 			_currentLevel.DamCollector.OnAllLogSpacesFilled += PlayPayOff;
 
 			TurnOffAttractor();
+		}
+
+		private void NextStoryBoard()
+		{
+			if (_currentStoryBoardIndex == _attractor.StoryboardSprites.Length - 1)
+			{
+				StartGame();
+			}
+			else
+			{
+				_currentStoryBoardIndex++;
+				_attractor.NextStoryboard(_currentStoryBoardIndex);
+			}
 		}
 
 		private void EndGame()
