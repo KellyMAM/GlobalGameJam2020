@@ -13,29 +13,34 @@ namespace GGJ
 
 		private Level _currentLevel;
 
-		private int _currentStoryBoardIndex = 0;
+		private int _currentStartStoryBoardIndex = 0;
+		private int _currentEndStoryBoardIndex = 0;
 
 		private void Awake()
 		{
 			_attractor.StartButton.onClick.AddListener(FadeInStoryboard);
-			_attractor.StoryboardButton.onClick.AddListener(NextStoryBoard);
-		}
-
-		private void TurnOnAttractor()
-		{
-			_attractor.TurnOnAttractor();
-		}
-
-		private void TurnOffAttractor()
-		{
-			_attractor.TurnOffAttractor();
+			_attractor.StartStoryboardButton.onClick.AddListener(NextStartStoryBoard);
+			_attractor.EndStoryboardButton.onClick.AddListener(NextEndStoryBoard);
 		}
 
 		private void FadeInStoryboard()
 		{
-			_currentStoryBoardIndex = 0;
-			_attractor.NextStoryboard(_currentStoryBoardIndex);
-			_attractor.TurnOffHomeScreen();
+			_currentStartStoryBoardIndex = 0;
+			_attractor.NextStartStoryboard(_currentStartStoryBoardIndex);
+			_attractor.TurnOffAttractor();
+		}
+
+		private void NextStartStoryBoard()
+		{
+			if (_currentStartStoryBoardIndex == _attractor.StartStoryboardSprites.Length - 1)
+			{
+				StartGame();
+			}
+			else
+			{
+				_currentStartStoryBoardIndex++;
+				_attractor.NextStartStoryboard(_currentStartStoryBoardIndex);
+			}
 		}
 
 		private void StartGame()
@@ -50,32 +55,44 @@ namespace GGJ
 			_currentLevel.transform.position = Vector3.zero;
 			_currentLevel.DamCollector.OnAllLogSpacesFilled += PlayPayOff;
 
-			TurnOffAttractor();
+			_attractor.TurnOffMain();
 		}
 
-		private void NextStoryBoard()
+		private void NextEndStoryBoard()
 		{
-			if (_currentStoryBoardIndex == _attractor.StoryboardSprites.Length - 1)
+			if (_currentEndStoryBoardIndex == _attractor.EndStoryboardSprites.Length - 1)
 			{
-				StartGame();
+				EndGame();
 			}
 			else
 			{
-				_currentStoryBoardIndex++;
-				_attractor.NextStoryboard(_currentStoryBoardIndex);
+				_currentEndStoryBoardIndex++;
+				_attractor.NextEndStoryboard(_currentEndStoryBoardIndex);
 			}
-		}
-
-		private void EndGame()
-		{
-			TurnOnAttractor();
 		}
 
 		private void PlayPayOff()
 		{
+			if (_currentLevel != null)
+			{
+				Destroy(_currentLevel.gameObject);
+				_currentLevel = null;
+			}
+
+			_attractor.TurnOnMain();
+			_attractor.TurnOffAttractor();
+
+			_attractor.TurnOffStartStoryboard();
+
 			Debug.Log("Well done you have completed the game");
 
-			EndGame();
+		}
+
+		private void EndGame()
+		{
+			Debug.Log("End of the game Jack");
+			_attractor.TurnOnAttractor();
+			_attractor.TurnOnStartStoryboard();
 		}
 	}
 }

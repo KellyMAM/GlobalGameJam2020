@@ -9,55 +9,87 @@ namespace GGJ
 	public class Attractor : MonoBehaviour
 	{
 		[SerializeField]
-		private Animator _animatorAttractor;
-
-		[SerializeField]
-		private Animator _animatorHome;
-
+		private Animator _mainAnimator;
 		[SerializeField]
 		public Button StartButton;
 
-		[SerializeField]
-		public Button StoryboardButton;
+		[Space]
 
 		[SerializeField]
-		public Sprite[] StoryboardSprites;
+		private Animator _attractAnim;
+		[SerializeField]
+		public Button StartStoryboardButton;
+		[SerializeField]
+		public Sprite[] StartStoryboardSprites;
+		[SerializeField]
+		private Image StartStoryboardImage;
+
+		[Space]
 
 		[SerializeField]
-		private Image StoryboardImage;
+		private Animator _startStoryboardAnim;
+		[SerializeField]
+		public Button EndStoryboardButton;
+		[SerializeField]
+		public Sprite[] EndStoryboardSprites;
+		[SerializeField]
+		private Image EndStoryboardImage;
+
 
 		private void Awake()
 		{
-			_animatorAttractor = GetComponent<Animator>();
+			_mainAnimator = GetComponent<Animator>();
+		}
+
+		public void TurnOnMain()
+		{
+			_mainAnimator.ResetTrigger("TurnOn");
+			_mainAnimator.SetTrigger("TurnOn");
+		}
+
+		public void TurnOffMain()
+		{
+			_mainAnimator.ResetTrigger("TurnOff");
+			_mainAnimator.SetTrigger("TurnOff");
+		}
+
+
+
+		public void TurnOffAttractor()
+		{
+			_attractAnim.ResetTrigger("TurnOff");
+			_attractAnim.SetTrigger("TurnOff");
 		}
 
 		public void TurnOnAttractor()
 		{
-			_animatorAttractor.ResetTrigger("TurnOn");
-			_animatorAttractor.SetTrigger("TurnOn");
+			_attractAnim.ResetTrigger("TurnOnImmediate");
+			_attractAnim.SetTrigger("TurnOnImmediate");
 		}
 
-		public void TurnOffAttractor()
+		public void NextStartStoryboard(int index)
 		{
-			_animatorAttractor.ResetTrigger("TurnOff");
-			_animatorAttractor.SetTrigger("TurnOff");
+			StartStoryboardImage.sprite = StartStoryboardSprites[index];
 		}
 
-		public void TurnOffHomeScreen()
+
+
+
+		public void TurnOffStartStoryboard()
 		{
-			_animatorHome.ResetTrigger("TurnOff");
-			_animatorHome.SetTrigger("TurnOff");
+			_startStoryboardAnim.ResetTrigger("TurnOffImmediate");
+			_startStoryboardAnim.SetTrigger("TurnOffImmediate");
 		}
 
-		public void TurnOnHomeScreen()
+		public void TurnOnStartStoryboard()
 		{
-			_animatorHome.ResetTrigger("TurnOnImmediate");
-			_animatorHome.SetTrigger("TurnOnImmediate");
+			_startStoryboardAnim.ResetTrigger("TurnOnImmediate");
+			_startStoryboardAnim.SetTrigger("TurnOnImmediate");
 		}
 
-		public void NextStoryboard(int index)
+		public void NextEndStoryboard(int index)
 		{
-			StoryboardImage.sprite = StoryboardSprites[index];
+			EndStoryboardImage.sprite = EndStoryboardSprites[index];
 		}
 	}
 }

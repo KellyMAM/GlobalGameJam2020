@@ -138,5 +138,11 @@ namespace GGJ
 
 			OnAllLogSpacesFilled();
 		}
+
+		[ContextMenu("TestTheEnd")]
+		private void TestTheEnd()
+		{
+			OnAllLogSpacesFilled();
+		}
 	}
 }
