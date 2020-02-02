@@ -20,7 +20,6 @@ namespace GGJ
 
 	public class DamCollector : MonoBehaviour
 	{
-
 		[SerializeField]
 		private List<LogSpace> _LogSpaces = new List<LogSpace>();
 
@@ -37,9 +36,9 @@ namespace GGJ
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.gameObject.tag == "Logs" && other.gameObject.GetComponent<Rigidbody>() != null)
+			if (other.gameObject.tag == "Logs" && other.gameObject.GetComponentInParent<Rigidbody>() != null)
 			{
-				Log log = other.GetComponent<Log>();
+				Log log = other.GetComponentInParent<Log>();
 				if (log != null && log.CurrentState == LogState.InField)
 				{
 					log.CurrentState = LogState.moving;
@@ -96,8 +95,9 @@ namespace GGJ
 
 				//Rotation
 				Vector3 rotation = Vector3.Lerp(log.transform.rotation.eulerAngles, target.transform.rotation.eulerAngles, value);
-				rotation = new Vector3(90, rotation.y, 0);
+				rotation = new Vector3(0, rotation.y, 0);
 				log.transform.eulerAngles = rotation;
+
 
 				elapsedTime += Time.deltaTime;
 				yield return null;
