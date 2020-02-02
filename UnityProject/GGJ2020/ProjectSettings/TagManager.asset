@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logs
   - Teeth
+  - water
   layers:
   - Default
   - TransparentFX

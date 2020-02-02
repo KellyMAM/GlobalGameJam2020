@@ -9,26 +9,44 @@ namespace GGJ
 	public class Attractor : MonoBehaviour
 	{
 		[SerializeField]
-		private Animator _animator;
+		private Animator _animatorAttractor;
+
+		[SerializeField]
+		private Animator _animatorHome;
 
 		[SerializeField]
 		public Button StartButton;
 
+		[SerializeField]
+		public Button StoryboardButton;
+
 		private void Awake()
 		{
-			_animator = GetComponent<Animator>();
+			_animatorAttractor = GetComponent<Animator>();
 		}
 
 		public void TurnOnAttractor()
 		{
-			_animator.ResetTrigger("TurnOn");
-			_animator.SetTrigger("TurnOn");
+			_animatorAttractor.ResetTrigger("TurnOn");
+			_animatorAttractor.SetTrigger("TurnOn");
 		}
 
 		public void TurnOffAttractor()
 		{
-			_animator.ResetTrigger("TurnOff");
-			_animator.SetTrigger("TurnOff");
+			_animatorAttractor.ResetTrigger("TurnOff");
+			_animatorAttractor.SetTrigger("TurnOff");
+		}
+
+		public void TurnOffHomeScreen()
+		{
+			_animatorHome.ResetTrigger("TurnOff");
+			_animatorHome.SetTrigger("TurnOff");
+		}
+
+		public void TurnOnHomeScreen()
+		{
+			_animatorHome.ResetTrigger("TurnOnImmediate");
+			_animatorHome.SetTrigger("TurnOnImmediate");
 		}
 	}
 }
