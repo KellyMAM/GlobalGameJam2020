@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GGJ
 {
@@ -9,7 +10,7 @@ namespace GGJ
 		[SerializeField]
 		private Attractor _attractor;
 		[SerializeField]
-		private Level _levelPrefab;
+		private string _levelPrefab;
 
 		private Level _currentLevel;
 
@@ -49,14 +50,25 @@ namespace GGJ
 			Debug.Log("Starting game");
 			if (_currentLevel != null)
 			{
-				Destroy(_currentLevel.gameObject);
+				//Destroy(_currentLevel.gameObject);
+				SceneManager.UnloadSceneAsync(_levelPrefab);
+
 				_currentLevel = null;
 			}
-			_currentLevel = Instantiate<GameObject>(_levelPrefab.gameObject, this.transform).GetComponent<Level>();
+		
+			SceneManager.LoadScene(_levelPrefab, LoadSceneMode.Additive);
+
+			SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+			
+			_attractor.TurnOffMain();
+		}
+
+		private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+		{
+			SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+			_currentLevel = FindObjectOfType<Level>();
 			_currentLevel.transform.position = Vector3.zero;
 			_currentLevel.DamCollector.OnAllLogSpacesFilled += PlayPayOff;
-
-			_attractor.TurnOffMain();
 		}
 
 		private void NextEndStoryBoard()
@@ -76,7 +88,8 @@ namespace GGJ
 		{
 			if (_currentLevel != null)
 			{
-				Destroy(_currentLevel.gameObject);
+				//Destroy(_currentLevel.gameObject);
+				SceneManager.UnloadSceneAsync(_levelPrefab);
 				_currentLevel = null;
 			}
 
