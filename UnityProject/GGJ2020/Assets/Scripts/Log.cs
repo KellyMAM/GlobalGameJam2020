@@ -5,7 +5,6 @@ using UnityEngine;
 namespace GGJ
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(BoxCollider))]
     public class Log : MonoBehaviour
     {
         [HideInInspector]
@@ -17,7 +16,7 @@ namespace GGJ
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            _capsuleCollider = GetComponent<BoxCollider>();
+            _capsuleCollider = GetComponentInChildren<BoxCollider>();
         }
 
         public void LogPlaced()
